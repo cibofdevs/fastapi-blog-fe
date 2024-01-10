@@ -10,8 +10,66 @@
 
 .post-image {
     display: block;
-    width: 100%;
+    width: 20%;
     object-fit: contain;
     padding-right: 10px;
     margin-bottom: auto;
+}
+
+.post-content {
+    display: block;
+}
+
+.post-title {
+    font-size: xx-large;
+}
+
+.post-creator {
+    font-size: small;
+    font-style: italic;
+    margin: 5px 5px 5px 10px;
+}
+
+.post-text {
+    white-space: pre-line;
+}
+
+.post-delete {
+    margin: 10px;
+}
+
+.btn-delete {
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.btn-delete:hover,
+.btn-delete:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+}
+
+.btn-delete:active {
+    opacity: .5;
 }
