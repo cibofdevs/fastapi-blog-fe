@@ -22,6 +22,7 @@
 
 .post-title {
     font-size: xx-large;
+    margin-left: 10px;
 }
 
 .post-creator {
@@ -32,6 +33,7 @@
 
 .post-text {
     white-space: pre-line;
+    margin: 10px;
 }
 
 .post-delete {
@@ -39,37 +41,25 @@
 }
 
 .btn-delete {
-    background: #FF4742;
-    border: 1px solid #FF4742;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
     border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-    box-sizing: border-box;
-    color: #FFFFFF;
+    border: none;
     cursor: pointer;
-    display: inline-block;
-    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 16px;
-    min-height: 40px;
-    outline: 0;
-    padding: 12px 14px;
-    text-align: center;
-    text-rendering: geometricprecision;
-    text-transform: none;
+
+    color: #fff;
+    background: linear-gradient(180deg, #FF4742 0%, #FF4742 100%);
+    background-origin: border-box;
+    box-shadow: 0px 0.5px 1.5px rgba(255, 71, 66, 0.2), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    vertical-align: middle;
 }
 
-.btn-delete:hover,
-.btn-delete:active {
-    background-color: initial;
-    background-position: 0 0;
-    color: #FF4742;
-}
-
-.btn-delete:active {
-    opacity: .5;
+.btn-delete:focus {
+    box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(255, 71, 66, 0.2), 0px 0px 0px 3.5px rgba(255, 71, 66, 0.2);
+    outline: 0;
 }
