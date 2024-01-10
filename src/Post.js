@@ -18,7 +18,7 @@ function Post({post}) {
                 <div className="post-creator">by {post.creator}</div>
                 <div className="post-text">{post.content}</div>
                 <div className="post-delete">
-                    <button className="btn-delete" onClick={null}>Delete Post</button>
+                    <button className="btn-delete" onClick={null}>Delete</button>
                 </div>
             </div>
         </div>
