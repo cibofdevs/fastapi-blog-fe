@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./NewPost.css"
 
 const BASE_URL = "http://127.0.0.1:8000/"
@@ -9,10 +9,78 @@ function NewPost() {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
 
+    const handleImageUpload = (e) => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+    }
+
+    const handleCreate = (e) => {
+        e?.preventDefault();
+
+        const formData = new FormData();
+        formData.append("image", image)
+
+        const requestOptions = {
+            method: "POST",
+            body: formData
+        }
+
+        fetch(BASE_URL + "post/image", requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw response;
+            })
+            .then(data => {
+                createPost(data.filename);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            .finally(() => {
+                setImage(null);
+                document.getElementById("fileInput").value = null;
+            })
+    }
+
+    const createPost = (imageUrl) => {
+        const jsonString = JSON.stringify({
+            "image_url": imageUrl,
+            "title": title,
+            "content": text,
+            "creator": creator
+        })
+
+        const requestOptions = {
+            method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
+            body: jsonString
+        }
+
+        fetch(BASE_URL + "post", requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw response;
+            })
+            .then(data => {
+                window.location.reload();
+                window.scrollTo(0, 0);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div className="newpost-content">
             <div className="newpost-image">
-                <input type="file" id="fileInput" onChange={null}/>
+                <input type="file" id="fileInput" onChange={handleImageUpload} />
             </div>
             <div className="newpost-creator">
                 <input type="text"
@@ -39,7 +107,7 @@ function NewPost() {
                           value={text} />
             </div>
             <div>
-                <button className="create-button" onClick={null}>Publish</button>
+                <button className="create-button" onClick={handleCreate}>Publish</button>
             </div>
         </div>
     )
